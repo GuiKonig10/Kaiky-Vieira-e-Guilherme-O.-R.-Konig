@@ -1,0 +1,60 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Visualizador de Tarefas</title>
+    </head>
+    <body>
+
+        <button onclick="criarTabela()">Mostrar Tabela</button>
+        <div id="DadosBase"></div>
+
+    <script>
+        const DadosBase = {
+            prioridade: 'Urgente',
+            descricao: 'Entregar trabalho final DWI',
+            local: 'IFC',
+            recursosNecessarios: ['Computador', 'Internet', 'Exemplos das aulas anteriores'],
+            dataLimite: '2025-12-03 00:00:00',
+            matricula: 3030303,
+        };
+
+        function criarTabela() {
+            document.getElementById("DadosBase").innerHTML = "";
+            const table = document.createElement("table");
+            table.setAttribute("border", "1");
+            const header = document.createElement("tr");
+            const colunas = ["Prioridade", "Descrição", "Local", "Recursos Necessários", "Data Limite", "Matrícula"];
+            colunas.forEach(titulo => {
+                const th = document.createElement("th");
+                th.textContent = titulo;
+                header.appendChild(th);
+            });
+
+            table.appendChild(header);
+            const row = document.createElement("tr");
+            const tdPrioridade = document.createElement("td");
+            tdPrioridade.textContent = DadosBase.prioridade;
+            const tdDescricao = document.createElement("td");
+            tdDescricao.textContent = DadosBase.descricao;
+            const tdLocal = document.createElement("td");
+            tdLocal.textContent = DadosBase.local;
+            const tdRecursos = document.createElement("td");
+            tdRecursos.textContent = DadosBase.recursosNecessarios.join(", ");
+            const tdData = document.createElement("td");
+            tdData.textContent = DadosBase.dataLimite;
+            const tdMatricula = document.createElement("td");
+            tdMatricula.textContent = DadosBase.matricula;
+
+            row.appendChild(tdPrioridade);
+            row.appendChild(tdDescricao);
+            row.appendChild(tdLocal);
+            row.appendChild(tdRecursos);
+            row.appendChild(tdData);
+            row.appendChild(tdMatricula);
+            table.appendChild(row);
+            document.getElementById("DadosBase").appendChild(table);
+        }
+    </script>
+
+    </body>
+    </html>
